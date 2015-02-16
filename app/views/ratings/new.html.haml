@@ -1,0 +1,7 @@
+%h1=@book.title
+%p rating:
+%p Text review:
+=form_tag(book_ratings_path(@book), method: 'POST') do
+  =number_field_tag(:rating)
+  =text_field_tag(:review)
+  =submit_tag("Add review")

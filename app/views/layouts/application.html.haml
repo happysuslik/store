@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= content_for?(:title) ? yield(:title) : "Store"
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  %body
+    .navbar-form
+      .container
+        #header{:style => "height:80px;"}
+          = render 'layouts/header'
+        .row
+          .col-xs-12
+            = yield
+            = debug(params) if Rails.env.development?

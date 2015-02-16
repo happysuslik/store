@@ -1,0 +1,14 @@
+%div.container
+  %div.row
+    %div.center_books
+      - @cart.line_items.each do |item|
+        %div.pull-left= image_tag(item.book.image_url(:thumb))
+        %h3= item.book.title
+        %span= item.book.description
+        %div.text-right
+          %span= "$#{item.book.price}"
+          %span= "QTY: #{item.quantity}"
+          %span= "Total: $#{item.price}"
+          %span= link_to 'x', item, :method => :delete
+
+= link_to 'Back', books_path

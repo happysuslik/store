@@ -1,0 +1,14 @@
+%div.h4.text-left Shop
+%div.text-right
+  Shop By Categories
+
+  -Category.all.each do |category|
+    %br
+    =link_to "#{category.title}", books_path(category: category)
+  %br
+  Shop By Authors
+  -Author.all.each do |author|
+    %br
+    =link_to "#{author.firstname}", books_path(author: author)
+- @books.each do |book|
+  =  render "book_row", book: book

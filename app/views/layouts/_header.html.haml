@@ -1,0 +1,17 @@
+.col-xs-2.col-md-6.col-md-push-5
+  = link_to 'Home', root_path, class: "btn btn-large btn-primary"
+
+  = link_to 'Shop', books_path, class: "btn btn-large btn-primary"
+.col-xs-12.col-md-3.col-md-pull-6
+  Launguage:
+  \#{link_to_unless_current "English", locale: "en"}
+  \#{link_to_unless_current "Russian", locale: "ru"}
+.col-xs-12.col-md-3
+  = link_to 'Cart', carts_path, class: "btn btn-large btn-primary"
+  = link_to 'Settings', root_path, class: "btn btn-large btn-primary"
+
+  = link_to 'Orders', root_path, class: "btn btn-large btn-primary"
+  - if user_signed_in?
+    = link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-large btn-primary"
+  - else
+    = link_to 'Sign in', new_user_session_path, class: "btn btn-large btn-primary"

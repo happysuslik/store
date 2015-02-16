@@ -1,0 +1,31 @@
+%div.container
+  %div.row
+    %div.center_books
+      %h3= @book.title
+      %div.pull-left= image_tag @book.image_url(:thumb)
+      %div.text-right
+        %p.col-xl-2="$#{@book.price}"
+        %p.col-xl-2= "Количество на складе: #{@book.stock}"
+        %p.col-xl-2
+          =form_tag(line_items_path, method: 'POST') do
+            =hidden_field_tag(:book_id, @book.id)
+            =number_field_tag(:quantity)
+            =submit_tag("Add to Cart")
+        %p= @book.description
+  %div
+    = link_to 'add review for the book', new_book_ratings_path(@book)
+    - @book.ratings.each do |rating|
+      %p= rating.review
+      %p= rating.rating
+
+
+
+
+
+
+/ %h1= @book.title
+/ .pull-right
+/   %div= image_tag @book.image_url
+
+/ %div= @book.description
+

@@ -1,0 +1,27 @@
+/ - @books.each do |book|
+/   = render 'carusel', book: book
+
+/ = t '.title'
+/ = link_to 'Admin_panel', rails_admin_path
+
+= link_to "Admin panel", rails_admin_path
+
+/ - if notice
+/   %p id='notice'
+/   = notice
+/ %h1 Мой Прагматический каталог
+/ - cache ['store', Book.last] do
+/   - @books.each do |book|
+/     -cache ['entry', book] do
+/       %div.entry
+/         = image_tag(book.image_url)
+
+/         %h3= book.title
+/         = sanitize(book.description)
+
+/         %div.price_line
+/           %span.price= number_to_currency(book.price)
+/           = button_to 'Add to Cart', line_items_path(book_id: book)
+
+
+
